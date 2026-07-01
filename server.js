@@ -5,7 +5,9 @@ const BetaTester = require('./models/BetaTester');
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: 'https://classhubsonu.vercel.app'
+}));
 app.use(express.json());
 
 
@@ -27,5 +29,5 @@ app.post('/api/register', async (req, res) => {
   }
 });
 
-const PORT = 5000;
-app.listen(PORT, '0.0.0.0', () => console.log(`Backend API running on http://192.168.1.18:${PORT}`));
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, '0.0.0.0', () => console.log(`Backend API running on port ${PORT}`));
